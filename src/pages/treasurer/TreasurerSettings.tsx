@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Settings, Upload, Save } from 'lucide-react';
+import { Settings, Upload, Save, Palette } from 'lucide-react';
 import { mockTreasurer } from '@/api/mock';
 import { queryKeys } from '@/lib/query';
 import {
@@ -8,6 +8,7 @@ import {
   LoadingState, ErrorState,
 } from '@/components/ui';
 import { formatCurrency } from '@/lib/format';
+import { AppearanceSettings } from '@/components/AppearanceProvider';
 
 export default function TreasurerSettings() {
   const qc = useQueryClient();
@@ -98,6 +99,15 @@ export default function TreasurerSettings() {
       )}
 
       <form onSubmit={submit} className="space-y-4">
+        <Card className="p-5">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <h3 className="text-sm font-bold text-neutral-900 flex items-center gap-2"><Palette size={16} className="text-primary-500" /> Portal Appearance</h3>
+              <p className="text-sm text-neutral-500 mt-1">Choose the background style for the private member and staff portal. The public website keeps its standard appearance.</p>
+            </div>
+          </div>
+          <AppearanceSettings />
+        </Card>
         <Card className="p-5">
           <h3 className="text-sm font-bold text-neutral-900 mb-4">Organization Letterhead</h3>
           <div className="space-y-4">
